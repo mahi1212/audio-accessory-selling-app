@@ -1,68 +1,46 @@
 import { StatusBar } from 'expo-status-bar';
 import Text from './src/components/text/Text';
-import { StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useEffect } from 'react';
 import FlashMessage from "react-native-flash-message";
+import Navigation from './navigation';
+import { Provider } from 'react-redux';
+import store from './src/store';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    "Manrope-Regular": require("./assets/fonts/Manrope-Regular.ttf"),
+    "Manrope-Regular": require('./assets/fonts/Manrope-Regular.ttf'),
     "Manrope-Medium": require("./assets/fonts/Manrope-Medium.ttf"),
     "Manrope-Bold": require("./assets/fonts/Manrope-Bold.ttf"),
   });
 
+  // useEffect(() => {
+  //   async function prepare() {
+  //     await SplashScreen.preventAutoHideAsync();
+  //   }
+  //   prepare();
+  // }, []);
+
+  // const onLayoutRootView = useCallback(async () => {
+  //   if (fontsLoaded) {
+  //     await SplashScreen.hideAsync();
+  //   }
+  // }, [fontsLoaded]);
+
   if (!fontsLoaded) {
-    return (
-      <Text>Text is loading...</Text>
-    )
+    return null;
   }
-
-
   return (
-    <View style={styles.container}>
-      <Text preset="h1">
-        h1: Facewash
-      </Text>
-      <Text preset="h2">
-      h2: Facewash
-      </Text>
-      <Text preset="h3">
-      h3: Facewash
-      </Text>
-      <Text preset="h4">
-        h4: Facewash
-      </Text>
-      <Text preset="h5">
-        h5: Facewash
-      </Text>
-      <Text preset="h6">
-        h6: Facewash
-      </Text>
-      <Text preset="title">
-        title: Facewash
-      </Text>
-      <Text preset="subtitle">
-        subtitle: Basic Setup doner
-      </Text>
-      <Text preset="overline">
-        overline: Basic Setup doner
-      </Text>
-      {/* <FlashMessage 
-        position="top"
-        floating
-        StatusBarHeight={30}
-      /> */}
-    </View>
+    <Provider store={store}>
+      <SafeAreaView >
+        <Navigation />
+      </SafeAreaView>
+    </Provider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  
 });
