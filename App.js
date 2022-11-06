@@ -34,7 +34,7 @@ export default function App() {
   }
   return (
     <Provider store={store}>
-      <SafeAreaView >
+      <SafeAreaView style={{flex: 1}} >
         <Navigation />
       </SafeAreaView>
     </Provider>

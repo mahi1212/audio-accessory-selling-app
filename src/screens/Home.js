@@ -4,8 +4,8 @@ import Text from '../components/text/Text'
 
 export default function Home() {
   return (
-    <View>
-      <Text preset='h3'>Home </Text>
+    <View style={{backgroundColor: 'green'}}>
+      <Text preset='h3' style={{color: '#000'}}>Home </Text>
     </View>
   )
 }
