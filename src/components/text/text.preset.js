@@ -15,7 +15,7 @@ const BASE = {
     default: BASE,
     bold: BOLD,
     h1: {
-      ...BASE,
+      ...BOLD,
       fontSize: 36,
     },
     h2: {

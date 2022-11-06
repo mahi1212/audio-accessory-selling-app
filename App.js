@@ -37,10 +37,11 @@ export default function App() {
       <SafeAreaView style={{flex: 1}} >
         <Navigation />
       </SafeAreaView>
+      <StatusBar />
     </Provider>
   );
 }
 
 const styles = StyleSheet.create({
-  
+
 });
